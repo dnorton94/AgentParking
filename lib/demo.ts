@@ -1,0 +1,10 @@
+export function demoCheck(date:string,time:string,duration:number,permit:string,returned:string){
+ const start=new Date(`${date}T${time}:00Z`); const minutes=start.getUTCHours()*60+start.getUTCMinutes();
+ const end=minutes+duration; const day=start.getUTCDay();
+ let status='allowed', title='You can park, with payment.',reason='Your whole stay falls within the paid parking hours.';
+ if(permit==='unsure'||returned==='unsure'){status='uncertain';title='Check before you park.';reason='We need to know whether your permit is valid for zone M and whether the no-return rule applies.';}
+ else if(permit==='yes'){status='uncertain';title='Your M permit is accepted. Check the stay limit.';reason='Zone M permit holders may use this bay at all times. The photograph alone does not establish whether the two-hour limit and no-return condition also apply to permit holders.';}
+ else if(day===0||minutes<540||end>1020){status='prohibited';title='You can’t park for this stay.';reason='Without a valid zone M permit, your entire stay must be Monday–Saturday, between 9am and 5pm. All other times, including Sundays, are permit holders only.';}
+ else if(duration>120||returned==='yes'){status='prohibited';title='You can’t park for this stay.';reason=duration>120?'Your stay exceeds the two-hour maximum for paid parking.':'The sign prohibits returning within one hour of leaving.';}
+ return {status,title,reason,restrictions:'Monday–Saturday, 9am–5pm: zone M permit holders or pay by phone. At all other times and on Sundays: zone M permit holders only.',payment:permit==='yes'?'A valid zone M permit is an alternative to payment.': 'During paid hours, call 020 7005 0055 and quote location 70094. The price is not shown; confirm the tariff before paying.',maximum:'Paid parking: maximum 2 hours. Permit-holder exemption is not clear from this photograph.',returnRule:'No return within 1 hour. Check whether this also applies to permit holders.',caution:'Based only on this sign. Check bay markings, nearby signs and temporary suspensions. A Blue Badge is not treated as a zone M permit.',source:'Based on the example photograph'};
+}

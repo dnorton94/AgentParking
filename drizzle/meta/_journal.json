@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1792089583891,
+      "tag": "0000_faithful_gorilla_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792090204782,
+      "tag": "0001_left_luckman",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792091373795,
+      "tag": "0002_square_robbie_robertson",
+      "breakpoints": true
+    }
+  ]
+}
